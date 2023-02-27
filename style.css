@@ -185,7 +185,9 @@ p.description {
 }
 
 /* コード */
-code {
+pre {
+    background: #333;
+    color: #fff;
     line-height: 1.6;
 }
 
