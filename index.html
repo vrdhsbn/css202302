@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>強化月間2023年2月</title>
+    <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.0/destyle.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <section>
+            <div class="left">
+                <h1>モダンCSS Demo</h1>
+            </div>
+            <div class="content">
+                <p>目次</p>
+                <ul class="toc">
+                    <li>
+                        <a href="#sec0">Gridレイアウト</a>
+                    </li>
+                    <li>
+                        <a href="#sec1">JS無しでのスムーススクロール</a>
+                    </li>
+                    <li>
+                        <a href="#sec2">論理プロパティ</a>
+                    </li>
+                    <li>
+                        <a href="#sec3">便利な擬似クラス</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="sec0">
+            <div class="left">
+                <h2>Gridレイアウト</h2>
+            </div>
+            <div class="content">
+                <p>カード風のコンポーネントをグリッド状に並べたりするときに便利。「お知らせ一覧」みたいなレイアウトはflexboxより簡単にできるしレスポンシブ対応も楽ちん。</p>
+<pre><code>.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}</code></pre>
+                <div class="grid-container">
+                    <div class="item">
+                        <img src="https://placehold.jp/300x300.png" alt="">
+                        <p class="title">タイトル</p>
+                        <p class="description">説明文がここに入ります説明文がここに入ります説明文がここに入ります</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://placehold.jp/300x300.png" alt="">
+                        <p class="title">タイトル</p>
+                        <p class="description">説明文がここに入ります説明文がここに入ります説明文がここに入ります</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://placehold.jp/300x300.png" alt="">
+                        <p class="title">タイトル</p>
+                        <p class="description">説明文がここに入ります説明文がここに入ります説明文がここに入ります</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://placehold.jp/300x300.png" alt="">
+                        <p class="title">タイトル</p>
+                        <p class="description">説明文がここに入ります説明文がここに入ります説明文がここに入ります</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://placehold.jp/300x300.png" alt="">
+                        <p class="title">タイトル</p>
+                        <p class="description">説明文がここに入ります説明文がここに入ります説明文がここに入ります</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://placehold.jp/300x300.png" alt="">
+                        <p class="title">タイトル</p>
+                        <p class="description">説明文がここに入ります説明文がここに入ります説明文がここに入ります</p>
+                    </div>
+                </div>
+                <p>スマホ表示の時は2カラムにしたい…というときも以下のように <span class="code">grid-template-columns</span> のrepeatを3から2に変更するだけでOK。また、いずれの場合でもグリッドコンテナの子要素である各アイテムの横幅は、いちいち指定せずともコンテナの3等分（または2等分）にしてくれる。</p>
+<pre><code>@media screen and (max-width: 767px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}</code></pre>
+                <p>また、行や列がグリッドの複数のセルにまたがるようなレイアウトも簡単に書ける。</p>
+                <div class="grid-container2">
+                    <div class="box box1">1</div>
+                    <div class="box box2">2</div>
+                    <div class="box box3">3</div>
+                    <div class="box box4">4</div>
+                    <div class="box box5">5</div>
+                </div>
+<pre><code>&lt;div class="grid-container2"&gt;
+    &lt;div class="box box1"&gt;1&lt;/div&gt;
+    &lt;div class="box box2"&gt;2&lt;/div&gt;
+    &lt;div class="box box3"&gt;3&lt;/div&gt;
+    &lt;div class="box box4"&gt;4&lt;/div&gt;
+    &lt;div class="box box5"&gt;5&lt;/div&gt;
+&lt;/div></code></pre>
+<pre><code>.box1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+}</code></pre>
+                <p>参考：<a href="https://developer.mozilla.org/ja/docs/Web/CSS/grid" target="_blank">https://developer.mozilla.org/ja/docs/Web/CSS/grid</a></p>
+            </div>
+        </section>
+
+        <section id="sec1">
+            <div class="left">
+                <h2>JS無しでのスムーススクロール</h2>
+            </div>
+            <div class="content">
+                <p>本ページ内のページ内リンクをクリックしたときのスムーススクロールにはJavaScriptを使っておらず、以下のCSSのみで実現している。</p>
+<pre><code>html {
+    scroll-behavior: smooth;
+}</code></pre>
+                <p>このときのスクロール速度は変更できず、ブラウザに依存する。Safariでは素早くスクロールし、Chromeでは比較的ゆっくりスクロールする。</p>
+                <p>参考：<a href="https://developer.mozilla.org/ja/docs/Web/CSS/scroll-behavior" target="_blank">https://developer.mozilla.org/ja/docs/Web/CSS/scroll-behavior</a></p>
+            </div>
+        </section>
+
+        <section id="sec2">
+            <div class="left">
+                <h2>論理プロパティ</h2>
+            </div>
+            <div class="content">
+                <p>従来は <span class="code">margin-right</span> や <span class="code">top</span> のように「上下左右」の値でマージンやパディング、位置を指定していた（物理プロパティ）。物理プロパティの代わりに、論理プロパティである <span class="code">inline / block</span> や <span class="code">start / end</span> を使った書き方ができる。</p>
+                <p>以下のようなプロフィールカードをレイアウトするとき、アバター画像とプロフィールテキストとの間にマージンを開けたいとする。このとき、<span class="code">margin-left</span> ではなく <span class="code">margin-inline-start</span> を使って書くことができる。</p>
+                <div class="profile-container">
+                    <img src="https://placehold.jp/200x200.png" alt="">
+                    <div class="profile-detail">
+                        <p class="name">名無しさん</p>
+                        <p class="comment">よろしくお願いします！</p>
+                    </div>
+                </div>
+<pre><code>.profile-detail {
+    margin-inline-start: 24px;
+}</code></pre>
+                <p>普段はあまり意識しないかもしれないが、アラビア語やヘブライ語のような右から左に向かう書字方向を使うサイトや、縦書きを用いるサイトでは活用できるシーンがあると思われる。</p>
+                <div class="profile-container rtl">
+                    <img src="https://placehold.jp/200x200.png" alt="">
+                    <div class="profile-detail">
+                        <p class="name">名無しさん</p>
+                        <p class="comment">よろしくお願いします！</p>
+                    </div>
+                </div>
+                <p>参考：<a href="https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Logical_Properties" target="_blank">https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Logical_Properties</a></p>
+            </div>
+        </section>
+
+        <section id="sec3">
+            <div class="left">
+                <h2>便利な擬似クラス</h2>
+            </div>
+            <div class="content">
+                <p><span class="code">:is()</span> や <span class="code">:where()</span> でセレクタを一括指定できる。</p>
+                <p>以下のように書くと <span class="code">.link1</span> と <span class="code">.link2</span> 配下のリンクにホバーしたときのみスタイルを適用できる。</p>
+<pre><code>:is(.link1, .link2) a:hover {
+    opacity: .6;
+}</code></pre>
+                <div class="link-container">
+                    <div class="link1">
+                        <a href="#">
+                            <img src="https://placehold.jp/200x200.png" alt="">
+                            <p>link1</p>
+                        </a>
+                    </div>
+                    <div class="link2">
+                        <a href="#">
+                            <img src="https://placehold.jp/200x200.png" alt="">
+                            <p>link2</p>
+                        </a>
+                    </div>
+                    <div class="link3">
+                        <a href="#">
+                            <img src="https://placehold.jp/200x200.png" alt="">
+                            <p>link3</p>
+                        </a>
+                    </div>
+                </div>
+                <p><span class="code">:where()</span> も同じ構文で同じことができるが、<span class="code">:is()</span> との違いは詳細度を持つか持たないか。<span class="code">:where()</span> の詳細度はつねに0であり、<span class="code">:is()</span> の詳細度は引数のセレクタに応じて決まる。<span class="code">:is(.link1, .link2)</span> の例だとクラスセレクタが2つあるのでこの詳細度は (0,2,0) になる。</p>
+                <p>参考：<a href="https://developer.mozilla.org/ja/docs/Web/CSS/:is" target="_blank">https://developer.mozilla.org/ja/docs/Web/CSS/:is</a></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

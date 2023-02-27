@@ -1,0 +1,196 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #333;
+    background: #efefef;
+}
+
+section {
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    min-height: 60vh;
+}
+
+h1,h2 {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 16px;
+    font-size: 24px;
+    padding: 16px;
+    margin-bottom: 64px;
+    margin-left: 32px;
+    width: fit-content;
+    border-right: solid 1px #333;
+    border-left: solid 1px #333;
+}
+
+.content {
+    position: relative;
+    padding: 32px 64px 64px 16px;
+}
+
+.toc {
+    margin-top: 24px;
+    padding-left: 24px;
+    list-style-type: disc;
+}
+
+.toc li+li {
+    margin-top: 8px;
+}
+
+a {
+    text-decoration: underline;
+}
+
+p {
+    letter-spacing: 1px;
+    line-height: 1.8;
+}
+
+p+p {
+    margin-top: 24px;
+}
+
+pre {
+    border: solid 1px #333;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 24px 0;
+}
+
+/* グリッドコンテナのデモ */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 32px 0;
+}
+
+@media screen and (max-width: 767px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.grid-container img {
+    width: 100%;
+}
+
+p.title {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+p.description {
+    margin-top: 0;
+}
+
+/* グリッドコンテナのデモ2 */
+.grid-container2 {
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    margin: 32px 0;
+    border: solid 2px #000;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+    background: rgb(62, 62, 195);
+}
+
+.box2 {
+    grid-column: 2 / 5;
+    grid-row: 1 / 2;
+    background: rgb(62, 195, 171);
+}
+
+.box3 {
+    grid-column: 4 / 5;
+    grid-row: 2 / 5;
+    background: rgb(195, 193, 62);
+}
+
+.box4 {
+    grid-column: 1 / 4;
+    grid-row: 4 / 5;
+    background: rgb(195, 62, 120);
+}
+
+.box5 {
+    grid-column: 2 / 4;
+    grid-row: 2 / 4;
+    background: rgb(99, 99, 111);
+}
+
+/* 論理プロパティのデモ */
+.profile-container {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.profile-container.rtl {
+    direction: rtl;
+}
+
+.profile-container img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.profile-detail {
+    margin-inline-start: 24px;
+}
+
+.profile-detail .name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.profile-detail .comment {
+    margin-top: 0;
+}
+
+/* 疑似要素のデモ */
+.link-container {
+    display: flex;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.link-container img {
+    width: 100%;
+}
+
+:is(.link1, .link2) a:hover {
+    opacity: .6;
+}
+
+/* コード */
+code {
+    line-height: 1.6;
+}
+
+span.code {
+    font-family: monospace;
+    background: #ddd;
+    padding: 4px;
+}
